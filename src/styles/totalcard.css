@@ -1,0 +1,30 @@
+.total__card {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.total__card__title {
+    font-size: 2rem;
+    font-family: 'Inria Sans', sans-serif;
+    color: var(--header-color);
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.total__card__total {
+    font-size: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-weight: 500;
+    color: var(--header-color);
+}
+.total__card__total span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: normal;
+    font-size: .8rem;
+}

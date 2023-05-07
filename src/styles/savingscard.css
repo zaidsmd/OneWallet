@@ -1,0 +1,44 @@
+.savings__card{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.savings__card__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.savings__card__title {
+    font-size: 2rem;
+    font-family: 'Inria Sans', sans-serif;
+    color: var(--header-color);
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.savings__card__button {
+    color: var(--text-color);
+}
+.savings__card__button:hover {
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 5px rgba(0, 201, 200, 0.15)) drop-shadow(0 0 5px rgba(0, 201, 200, 0.10)) contrast(2) brightness(2);
+}
+.savings__card__body{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.savings__card__body>div:last-child{
+    grid-area: 2 / 1 / 2 / 4;
+}
+@media screen and (max-width:1500px ) {
+    .savings__card__body{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    .savings__card__body>div:last-child{
+        grid-area: revert;
+    }
+}

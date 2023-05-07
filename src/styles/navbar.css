@@ -1,0 +1,295 @@
+
+.navbar__container {
+   position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 21rem ;
+    min-width: 21rem;
+    background-color: var(--navbar-background-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.navbar__mobile__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.navbar__logo__and__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.navbar__logo {
+    width: 100%;
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--header-color);
+    margin-bottom: 2rem;
+}
+
+.navbar__logo__span {
+    font-family: 'Inria Sans', sans-serif;
+}
+
+.colored__logo {
+    color: var(--accent-color);
+}
+
+.navbar__group {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.navbar__button {
+    color: var(--header-color);
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    position: relative;
+    border-radius: .3rem;
+    margin-bottom: 1rem;
+    border: 2px solid transparent;
+    transition: all 300ms linear;
+}
+
+.navbar__button:hover {
+    border-left: 2px solid var(--accent-color);
+    filter: drop-shadow(0 0 5px rgba(0, 201, 200, 0.15)) drop-shadow(0 0 5px rgba(0, 201, 200, 0.10)) contrast(2) brightness(2);
+}
+
+.navbar__header__icon {
+    transition: all 300ms linear;
+}
+
+.navbar__header__icon.active {
+    transform: rotate(-90deg);
+}
+
+.navbar__list {
+    opacity: 0;
+    display: none;
+    animation: fade-out 500ms;
+}
+
+.navbar__list.active {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    opacity: 1;
+    animation: fade-in 500ms;
+}
+
+.navbar__item {
+    padding: 0 10px;
+}
+
+.navbar__link {
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-color);
+    animation: fade-in 500ms;
+    transition: all linear 300ms;
+    font-size: 1.5rem;
+}
+
+.navbar__link.active {
+    border-left: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 5px rgba(0, 201, 200, 0.10)) drop-shadow(0 0 5px rgba(0, 201, 200, 0.10)) contrast(2) brightness(2);
+}
+
+.navbar__link:hover {
+    border-left: 2px solid var(--accent-color);
+    filter: drop-shadow(0 0 5px rgba(0, 201, 200, 0.10)) drop-shadow(0 0 5px rgba(0, 201, 200, 0.10)) contrast(2) brightness(2);
+}
+
+.navbar__link span:first-child {
+    display: flex;
+}
+
+.navbar__logout__button {
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: .3rem;
+    border: 1px solid var(--red-color);
+    color: var(--red-color);
+    transition: all ease-in-out 300ms;
+}
+
+.navbar__logout__button:hover {
+    background-color: var(--red-color);
+    color: var(--header-color);
+    filter: drop-shadow(0 0 5px rgba(213, 47, 47, 0.10)) drop-shadow(0 0 5px rgba(213, 47, 47, 0.10)) contrast(1) brightness(1);
+}
+
+.navbar__logout__button span:first-child {
+    display: flex;
+}
+.navbar__container__top{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    70%{
+      opacity: 1;
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+@keyframes slide-left {
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        display: flex;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+@media screen and (max-width: 960px){
+    .navbar__container {
+        width: fit-content;
+        min-width: fit-content;
+        align-items: center;
+    }
+    .navbar__group {
+        gap: 4rem;
+    }
+    .navbar__logo__and__nav {
+        height: 100%;
+        justify-content: center;
+    }
+    .navbar__list {
+        gap: 4rem !important;
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+        animation: fade-in 500ms;
+       align-items: center;
+    }
+    .navbar__item  {
+        scale: 1.5;
+        width: fit-content;
+    }
+    .navbar__logout__button{
+        padding: 1rem;
+        width: fit-content;
+        border-radius: 50%;
+    }
+    .navbar__logo {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    .navbar__link {
+        margin-left: -10px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .navbar__container {
+        position: sticky;
+        z-index: 150;
+        top: 0;
+        flex-direction: row;
+        height: fit-content;
+        width: 100%;
+        padding: 1rem;
+        align-items: center;
+    }
+    .navbar__logout__button{
+        width: 100%;
+        border-radius: .3rem;
+    }
+    .navbar__logo {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0;
+    }
+    .navbar__mobile__container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: rgba(10, 21, 26, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        flex-grow: 0;
+        height: 100vh;
+        width: 200px;
+        padding: 2rem;
+        backdrop-filter: drop-shadow(2px 10px black) ;
+        animation: slide-right 500ms;
+    }
+    .navbar__mobile__container.hide {
+        animation: slide-left 500ms;
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    .navbar__item  {
+        scale: 1;
+        width: fit-content;
+    }
+    .navbar__list {
+        opacity: 0;
+        display: none;
+        animation: fade-out 500ms;
+    }
+
+    .navbar__list.active {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: start;
+        opacity: 1;
+        animation: fade-in 500ms;
+    }
+}

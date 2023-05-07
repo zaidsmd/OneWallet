@@ -1,0 +1,39 @@
+.card__transaction {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding: .5rem .5rem;
+}
+.card__transaction__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.card__transaction__category {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--header-color);
+    text-transform: capitalize;
+}
+.card__transaction__amount {
+    font-family: 'Inria Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--header-color);
+}
+.card__transaction__body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.card__transaction__description {
+    color: var(--text-color);
+    text-transform: capitalize;
+
+}
+.card__transaction__status {
+    text-transform: capitalize;
+}
