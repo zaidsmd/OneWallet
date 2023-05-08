@@ -29,7 +29,7 @@ function Navbar() {
         else setMobileVersion(false)
     }
     const handleMobileVersionOnClick = () => {
-        setOpenNavbar(!openNavbar)
+        setOpenNavbar(!openNavbar);
     }
     window.addEventListener('resize', handleMobileVersion);
     window.addEventListener('resize', handleMobileNavBar);

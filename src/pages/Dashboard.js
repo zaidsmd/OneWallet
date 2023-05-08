@@ -8,7 +8,6 @@ import PieStatisticsCard from "../components/PieStatisticsCard";
 import MyButton from "../components/MyButton";
 import {ImportCurve} from "iconsax-react";
 import ModalForm from "../components/ModalForm";
-import modalForm from "../components/ModalForm";
 
 const data = [
     {
@@ -86,7 +85,8 @@ function Dashboard() {
                 Dashboard Overview
             </h1>
             <div className="main__buttons">
-                <MyButton children={mobileVersion ? "Add" : "Add Transaction"} onClick={modalToggle}  classnames={["btn-primary"]}/>
+                <MyButton children={mobileVersion ? "Add" : "Add Transaction"} onClick={modalToggle}
+                          classnames={["btn-primary"]}/>
                 {!mobileVersion ? <MyButton children={<ImportCurve size={20}/>} classnames={[]}/> : null}
             </div>
         </div>
@@ -101,7 +101,7 @@ function Dashboard() {
             <PieStatisticsCard title={"Spending Statistics"} nameKey={"name"} data={pie} colorsArray={colorsArray}
                                dataKey={"value"}/>
         </div>
-        <ModalForm isOpen={modalOpened ? true : false} />
+        <ModalForm  closeFunc={modalToggle} isOpen={modalOpened ? true : false}/>
     </div>);
 }
 
