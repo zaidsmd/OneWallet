@@ -4,10 +4,9 @@ import '../styles/buttons.css'
 
 MyButton.propsType={
     classnames : PropTypes.array.isRequired,
-    children: PropTypes.any.isRequired,
+    children: PropTypes.element.isRequired,
     onClick:PropTypes.func,
 }
-fetch('').then()
 function MyButton(props) {
     let classnames_String = props.classnames.join(' ');
     return (

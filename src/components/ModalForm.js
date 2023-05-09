@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactModal from 'react-modal';
 import PropTypes from "prop-types";
+import '../styles/modalform.css'
+import {Add} from "iconsax-react";
+import {styled} from "@mui/material/styles";
+import {InputAdornment, TextField} from "@mui/material";
 
 ModalForm.propTypes = {
     content: PropTypes.element,
@@ -8,153 +12,77 @@ ModalForm.propTypes = {
     style: PropTypes.object,
     closeFunc: PropTypes.func,
 };
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+        color: 'var( --accent-color)',
+    },
+    '& .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root': {
+        color: "white"
+    },
+    '& .css-v4u5dn-MuiInputBase-root-MuiInput-root:before': {
+        borderBottom: '1px solid white'
+    },
+    '& .css-v4u5dn-MuiInputBase-root-MuiInput-root:hover:not(.Mui-disabled, .Mui-error):before': {
+        borderBottom: '2px solid white'
+    },
+    '& .MuiInput-underline:after': {
+        borderBottomColor: 'var( --accent-color)',
+    },
+    '& .MuiOutlinedInput-root': {
+        '& fieldset': {
+            borderColor: 'white',
+        },
+        '&:hover fieldset': {
+            borderColor: 'var( --accent-color)',
+        },
+        '&.Mui-focused fieldset': {
+            borderColor: 'var( --accent-color)',
+        },
+    },
+});
 
 function ModalForm(props) {
+    const [value, setValue] = useState(0);
+    const addCommas = (num) =>
+        num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const removeNonNumeric = (num) => num.toString().replace(/[^0-9]/g, "");
+    const handleChange = (event) =>
+        setValue(addCommas(removeNonNumeric(event.target.value)));
 
     return (
         <ReactModal
-
-            isOpen={
-                false
-                /* Boolean describing if the modal should be shown or not. */
-            }
-
-            onAfterOpen={""
-                // handleAfterOpenFunc
-                /* Function that will be run after the modal has opened. */}
-
-            onAfterClose={""
-                // handleAfterCloseFunc
-                /* Function that will be run after the modal has closed. */}
-
-            onRequestClose={""
-                // handleRequestCloseFunc
-                /* Function that will be run when the modal is requested
-                   to be closed (either by clicking on overlay or pressing ESC).
-                   Note: It is not called if isOpen is changed by other means. */}
-
-            closeTimeoutMS={
-                5
-                /* Number indicating the milliseconds to wait before closing
-                   the modal. */}
-
-            style={
-                {overlay: {}, content: {}}
-                /* Object indicating styles to be used for the modal.
-                   It has two keys, `overlay` and `content`.
-                   See the `Styles` section for more details. */}
-
-            contentLabel={
-                "Example Modal"
-                /* String indicating how the content container should be announced
-                   to screenreaders */}
-
-            portalClassName={
-                "ReactModalPortal"
-                /* String className to be applied to the portal.
-                   See the `Styles` section for more details. */}
-
-            overlayClassName={
-                "ReactModal__Overlay"
-                /* String className to be applied to the overlay.
-                   See the `Styles` section for more details. */}
-
-            id={
-                "some-id"
-                /* String id to be applied to the content div. */}
-
-            className={
-                "ReactModal__Content"
-                /* String className to be applied to the modal content.
-                   See the `Styles` section for more details. */}
-
-            bodyOpenClassName={
-                "ReactModal__Body--open"
-                /* String className to be applied to the modal ownerDocument.body
-                   (must be a constant string).
-                   This attribute when set as `null` doesn't add any class
-                   to document.body.
-                   See the `Styles` section for more details. */}
-
-            htmlOpenClassName={
-                "ReactModal__Html--open"
-                /* String className to be applied to the modal ownerDocument.html
-                   (must be a constant string).
-                   This attribute is `null` by default.
-                   See the `Styles` section for more details. */}
-
-            ariaHideApp={
-                true
-                /* Boolean indicating if the appElement should be hidden */}
-
-            shouldFocusAfterRender={
-                true
-                /* Boolean indicating if the modal should be focused after render. */}
-
-            shouldCloseOnOverlayClick={
-                true
-                /* Boolean indicating if the overlay should close the modal */}
-
-            shouldCloseOnEsc={
-                true
-                /* Boolean indicating if pressing the esc key should close the modal
-                   Note: By disabling the esc key from closing the modal
-                   you may introduce an accessibility issue. */}
-
-            shouldReturnFocusAfterClose={
-                true
-                /* Boolean indicating if the modal should restore focus to the element
-                   that had focus prior to its display. */}
-
-            role={
-                "dialog"
-                /* String indicating the role of the modal, allowing the 'dialog' role
-                   to be applied if desired.
-                   This attribute is `dialog` by default. */}
-
-            preventScroll={
-                false
-                /* Boolean indicating if the modal should use the preventScroll flag when
-                   restoring focus to the element that had focus prior to its display. */}
-
-            parentSelector={
-                () => document.body
-                /* Function that will be called to get the parent element
-                   that the modal will be attached to. */}
-
-            aria={
-                {
-                    labelledby: "heading",
-                    describedby: "full_description"
-                }
-                /* Additional aria attributes (optional). */}
-
-            data={
-                {background: "green"}
-                /* Additional data attributes (optional). */}
-
-            testId={
-                ""
-                /* String testId that renders a data-testid attribute in the DOM,
-                  useful for testing. */}
-
-            overlayRef={
-                "setOverlayRef"
-                /* Overlay ref callback. */}
-
-            contentRef={
-                "setContentRef"
-                /* Content ref callback. */}
-
-            overlayElement={
-                (props, contentElement) => <div {...props}>{contentElement}</div>
-                /* Custom Overlay element. */}
-
-            contentElement={
-                (props, children) => <div {...props}>{children}</div>
-                /* Custom Content element. */}
+            isOpen={props.isOpen}
+            closeTimeoutMS={5}
+            contentLabel={"Example Modal"}
+            portalClassName={"ReactModalPortal"}
+            id={"theContent"}
+            shouldCloseOnEsc={true}
+            shouldReturnFocusAfterClose={true}
+            role={"dialog"}
+            preventScroll={true}
         >
-            <p>Modal Content</p>
+            <div className="modal__header">
+                <h2 className="modal__title">Add Transaction</h2>
+                <button className={"btn"} style={{padding: ".5rem"}} onClick={props.closeFunc}><Add size={30} style={{rotate: "-45deg"}}/></button>
+            </div>
+            <div className="modal__body__content">
+                <form className={"modal__form__form"} action="">
+                    <div className="input__grouped">
+                        <div className="input__container">
+                            <div className="input">
+                                <CssTextField id={"name"} fullwidth label={"Transaction Name"} variant="standard"/>
+                            </div>
+                        </div>
+                        <div className="input__container">
+                            <div className="input">
+                                <CssTextField id={"amount"} value={value} onChange={handleChange} fullwidth label={"Amount"} variant="standard" InputProps={{
+                                    startAdornment: <InputAdornment color={"#00C9C8"} position="start">$</InputAdornment>,
+                                }}/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </ReactModal>
     );
 }

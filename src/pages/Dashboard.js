@@ -101,7 +101,7 @@ function Dashboard() {
             <PieStatisticsCard title={"Spending Statistics"} nameKey={"name"} data={pie} colorsArray={colorsArray}
                                dataKey={"value"}/>
         </div>
-        <ModalForm  closeFunc={modalToggle} isOpen={modalOpened ? true : false}/>
+        <ModalForm  closeFunc={modalToggle} isOpen={modalOpened}/>
     </div>);
 }
 
