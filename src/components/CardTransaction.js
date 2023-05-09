@@ -12,7 +12,7 @@ CardTransaction.propTypes = {
 
 function CardTransaction(props) {
     const status = () => {
-      if (props.status == "completed"){
+      if (props.status === "completed"){
           return (
               <p className="card__transaction__status green">
                   {props.status}
@@ -33,7 +33,7 @@ function CardTransaction(props) {
                     {props.category}
                 </p>
                 <p className="card__transaction__amount">
-                    {props.transactionType=="income" ? "+" : "-"}${props.amount}
+                    {props.transactionType==="income" ? "+" : "-"}${props.amount}
                 </p>
             </div>
             <div className="card__transaction__body">

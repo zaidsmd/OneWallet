@@ -14,7 +14,7 @@ TotalCard.propTypes = {
 function TotalCard(props) {
     const difference = props.total - props.lastTotal;
     const analyze = ()=>{
-        if (props.template == "income"){
+        if (props.template ==="income"){
             if (difference < 0){
                 return (
                     <span className="total__card__analyze red">
@@ -34,7 +34,7 @@ function TotalCard(props) {
                     </span>
                 )
             }
-        }else if(props.template=="spending"){
+        }else if(props.template==="spending"){
             if (difference < 0){
                 return (
                     <span className="total__card__analyze green">

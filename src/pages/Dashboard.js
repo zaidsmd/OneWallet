@@ -62,7 +62,15 @@ const pie = [
         "name": "Category" + Math.floor(Math.random() * 10000), "value": Math.floor(Math.random() * 10000)
     }, {
         "name": "Category" + Math.floor(Math.random() * 10000), "value": Math.floor(Math.random() * 10000)
-    }]
+    }];
+const categories = [
+    {
+        "name": "Category" + Math.floor(Math.random() * 10000), "value": "Category" + Math.floor(Math.random() * 10000)
+    }, {
+        "name": "Category" + Math.floor(Math.random() * 10000),"value": "Category" + Math.floor(Math.random() * 10000)
+    }, {
+        "name": "Category" + Math.floor(Math.random() * 10000), "value": "Category" + Math.floor(Math.random() * 10000)
+    }];
 const colorsArray = ["#00C9C8", "#00A0A0", "#00797A", "#005456", "#003134"]
 
 function Dashboard() {
@@ -101,7 +109,7 @@ function Dashboard() {
             <PieStatisticsCard title={"Spending Statistics"} nameKey={"name"} data={pie} colorsArray={colorsArray}
                                dataKey={"value"}/>
         </div>
-        <ModalForm  closeFunc={modalToggle} isOpen={modalOpened}/>
+        <ModalForm options={categories} closeFunc={modalToggle} isOpen={modalOpened}/>
     </div>);
 }
 

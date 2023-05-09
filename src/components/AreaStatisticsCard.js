@@ -17,6 +17,7 @@ function AreaStatisticsCard(props) {
         let maxS = [];
         props.lineKeys.map((key, index) => {
             maxS.push(Math.max(...array.map((object, index) => object[key])))
+            return true
         })
         return Math.max(...maxS) + 500;
     }
