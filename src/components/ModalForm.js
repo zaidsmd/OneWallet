@@ -4,7 +4,16 @@ import PropTypes from "prop-types";
 import '../styles/modalform.css'
 import {Add} from "iconsax-react";
 import {styled} from "@mui/material/styles";
-import {FormControl, InputAdornment, InputLabel, MenuItem, Select, TextField} from "@mui/material";
+import {
+    createTheme,
+    FormControl,
+    InputAdornment,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+    ThemeProvider
+} from "@mui/material";
 
 ModalForm.propTypes = {
     content: PropTypes.element,
@@ -60,6 +69,22 @@ function ModalForm(props) {
     const handleTypeSelectChange = (event) => {
         setType(event.target.value);
     };
+    const theme = createTheme(
+        {
+            palette: {
+                mode: "light",
+                primary: {
+                    main: "#00C9C8"
+                }
+                ,
+                text: {
+                    primary: "#fff",
+                    secondary: "#fff"
+                }
+            },
+
+        }
+    )
     return (
         <ReactModal
             isOpen={props.isOpen}
@@ -83,66 +108,76 @@ function ModalForm(props) {
                     <div className="input__grouped">
                         <div className="input__container">
                             <div className="input">
-                                <CssTextField id={"name"} fullwidth label={"Transaction Name"} variant="standard"/>
+                                <ThemeProvider theme={theme}>
+                                    <TextField id={"name"} fullwidth label={"Transaction Name"} variant="standard"/>
+                                </ThemeProvider>
                             </div>
                         </div>
                         <div className="input__container">
                             <div className="input">
-                                <CssTextField id={"amount"} value={value} onChange={handleChange} fullwidth
-                                              label={"Amount"} variant="standard" InputProps={{
-                                    startAdornment: <InputAdornment color={"#00C9C8"}
-                                                                    position="start">$</InputAdornment>,
-                                }}/>
+                                <ThemeProvider theme={theme}>
+                                    <TextField id={"amount"} value={value} onChange={handleChange} fullwidth
+                                               label={"Amount"} variant="standard" InputProps={{
+                                        startAdornment: <InputAdornment color={"#00C9C8"}
+                                                                        position="start">$</InputAdornment>,
+                                    }}/>
+                                </ThemeProvider>
                             </div>
                         </div>
                     </div>
-                   <div className="input__grouped">
-                       <div className="input__container">
-                           <FormControl variant="standard" sx={{m: 1, minWidth: 120}}>
-                               <InputLabel id="type__select__label">Category</InputLabel>
-                               <Select
-                                   labelId="type__select__label"
-                                   id="type__select"
-                                   value={type}
-                                   onChange={handleTypeSelectChange}
-                                   label="Type"
-                               >
-                                   <MenuItem value="income">
-                                       Income
-                                   </MenuItem>
-                                   <MenuItem value="spending">
-                                       Spending
-                                   </MenuItem>
-                               </Select>
-                           </FormControl>
-                       </div>
-                       <div className="input__container">
-                           <FormControl variant="standard" sx={{m: 1, minWidth: 120}}>
-                               <InputLabel id="category__select__label">Category</InputLabel>
-                               <Select
-                                   labelId="category__select__label"
-                                   id="category__select"
-                                   value={category}
-                                   onChange={handleCategorySelectChange}
-                                   label="Category"
-                               >
-                                   <MenuItem value="">
-                                       <em>None</em>
-                                   </MenuItem>
-                                   {
-                                       props.options.map((option, index) => {
-                                           return (
-                                               <MenuItem key={option["name"] + "-" + index}
-                                                         value={option["value"]}>{option["name"]}</MenuItem>
-                                           )
-                                       })
-                                   }
-                               </Select>
-                           </FormControl>
-                       </div>
-                   </div>
+                    <div className="input__grouped">
+                        <div className="input__container">
+                            <ThemeProvider theme={theme}>
+                                <FormControl variant="standard" sx={{m: 1, minWidth: 120}}>
+                                    <InputLabel id="type__select__label">Category</InputLabel>
+                                    <Select
+                                        labelId="type__select__label"
+                                        id="type__select"
+                                        value={type}
+                                        onChange={handleTypeSelectChange}
+                                        label="Type"
+                                    >
+                                        <MenuItem value="income">
+                                            Income
+                                        </MenuItem>
+                                        <MenuItem value="spending">
+                                            Spending
+                                        </MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </ThemeProvider>
+                        </div>
+                        <div className="input__container">
+                            <ThemeProvider theme={theme}>
+                                <FormControl variant="standard" sx={{m: 1, minWidth: 120}}>
+                                    <InputLabel id="category__select__label">Category</InputLabel>
+                                    <Select
+                                        labelId="category__select__label"
+                                        id="category__select"
+                                        value={category}
+                                        onChange={handleCategorySelectChange}
+                                        label="Category"
+                                    >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                        {
+                                            props.options.map((option, index) => {
+                                                return (
+                                                    <MenuItem key={option["name"] + "-" + index}
+                                                              value={option["value"]}>{option["name"]}</MenuItem>
+                                                )
+                                            })
+                                        }
+                                    </Select>
+                                </FormControl>
+                            </ThemeProvider>
+                        </div>
+                    </div>
                     <div className="input__container">
-                        <CssTextField multiline fullwidth variant="standard" label={"Description"} id={"description"}/>
+                        <ThemeProvider theme={theme}>
+                            <TextField multiline fullwidth variant="standard" label={"Description"} id={"description"}/>
+                        </ThemeProvider>
                     </div>
                 </form>
             </div>
